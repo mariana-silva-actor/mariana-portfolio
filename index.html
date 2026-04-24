@@ -1,318 +1,219 @@
+
+
 <!DOCTYPE html>
-
-
-
 <html lang="en">
-
-
-
 <head>
-
-
-
   <meta charset="UTF-8">
-
-
-
   <title>Mariana Silva — Actor</title>
-
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-
-
   <style>
-
-
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-
-
-
       font-family: 'Inter', sans-serif;
-
-
-
       background: #0d0d0d;
-
-
-
       color: #e8e8e8;
-
-
-
       line-height: 1.6;
-
-
-
+      overflow-x: hidden;
     }
 
-
-
-    nav {
-
-
-
+    /* Film grain texture */
+    body::after {
+      content: "";
       position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+      opacity: 0.08;
+    }
 
-
-
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
       width: 100%;
-
-
-
       padding: 20px 40px;
-
-
-
       display: flex;
-
-
-
       justify-content: space-between;
-
-
-
-      background: rgba(13,13,13,0.6);
-
-
-
-    }
-
-
-
-    nav a { margin-left: 20px; color: white; opacity: 0.7; text-decoration: none; }
-
-
-
-    .hero {
-
-
-
-      height: 100vh;
-
-
-
-      display: flex;
-
-
-
       align-items: center;
-
-
-
-      justify-content: center;
-
-
-
-      text-align: center;
-
-
-
-      background: url('https://picsum.photos/1600/900?grayscale') center/cover;
-
-
-
+      background: rgba(13,13,13,0.35);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
     }
 
-
-
-    .hero h1 {
-
-
-
+    nav .name {
       font-family: 'Playfair Display', serif;
-
-
-
-      font-size: 3rem;
-
-
-
+      font-size: 16px;
+      letter-spacing: 1px;
+      opacity: 0.9;
     }
 
+    nav a {
+      margin-left: 20px;
+      font-size: 13px;
+      opacity: 0.7;
+      text-decoration: none;
+      color: #fff;
+    }
 
+    nav a:hover {
+      opacity: 1;
+    }
 
+    /* ===== HERO (no text = cinematic frame) ===== */
+    .hero {
+      height: 100vh;
+      background: url('https://picsum.photos/1600/900?grayscale') center/cover;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+
+    /* ===== SECTIONS ===== */
     section {
-
-
-
       padding: 80px 20px;
-
-
-
       max-width: 900px;
-
-
-
       margin: auto;
-
-
-
     }
 
+    h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
 
+    p {
+      opacity: 0.85;
+    }
+
+    /* ===== SHOWREEL ===== */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 15px;
+    }
 
     .gallery img {
-
-
-
       width: 100%;
-
-
-
-      margin-bottom: 10px;
-
-
-
       filter: grayscale(100%);
-
-
-
+      transition: 0.4s ease;
     }
 
+    .gallery img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
 
+    /* ===== CONTACT ===== */
+    .contact a {
+      display: block;
+      margin-bottom: 10px;
+      opacity: 0.8;
+      color: #fff;
+      text-decoration: none;
+    }
 
+    .contact a:hover {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width: 600px) {
+      nav {
+        padding: 15px 20px;
+      }
+    }
   </style>
-
-
-
 </head>
-
-
 
 <body>
 
-
-
+<!-- NAV -->
 <nav>
-
-
-
-  <div>Mariana Silva</div>
-
-
-
+  <div class="name">Mariana Silva</div>
   <div>
-
-
-
     <a href="#about">About</a>
-
-
-
     <a href="#showreel">Showreel</a>
-
-
-
     <a href="#gallery">Stills</a>
-
-
-
     <a href="#contact">Contact</a>
-
-
-
   </div>
-
-
-
 </nav>
 
+<!-- HERO (intentionally empty for cinematic feel) -->
+<div class="hero"></div>
 
-
-<div class="hero">
-
-
-
-  <h1>Mariana Silva</h1>
-
-
-
-</div>
-
-
-
+<!-- ABOUT -->
 <section id="about">
-
-
-
   <h2>About</h2>
-
-
-
-  <p>Replace this text with your biography.</p>
-
-
-
+  <p>
+    Replace this text with your biography. Keep it minimal, atmospheric, and professional.
+    Mention training, work, and the types of roles you are drawn to.
+  </p>
 </section>
 
-
-
+<!-- SHOWREEL -->
 <section id="showreel">
-
-
-
   <h2>Showreel</h2>
-
-
-
-  <p>Insert YouTube embed here later.</p>
-
-
-
+  <div class="video-wrapper">
+    <!-- Replace VIDEO_ID -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+  </div>
 </section>
 
-
-
-<section id="gallery" class="gallery">
-
-
-
+<!-- GALLERY -->
+<section id="gallery">
   <h2>Stills</h2>
-
-
-
-  <img src="https://picsum.photos/400/500?grayscale">
-
-
-
-  <img src="https://picsum.photos/401/500?grayscale">
-
-
-
+  <div class="gallery">
+    <img src="https://picsum.photos/400/500?grayscale">
+    <img src="https://picsum.photos/401/500?grayscale">
+    <img src="https://picsum.photos/402/500?grayscale">
+    <img src="https://picsum.photos/403/500?grayscale">
+  </div>
 </section>
 
-
-
+<!-- CONTACT -->
 <section id="contact">
-
-
-
   <h2>Contact</h2>
-
-
-
-  <p>your@email.com</p>
-
-
-
+  <a href="mailto:your@email.com">your@email.com</a>
 </section>
 
-
+<footer>
+  © 2026 Mariana Silva
+</footer>
 
 </body>
-
-
-
 </html>
 
