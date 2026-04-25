@@ -61,9 +61,25 @@
 
     .menu a:hover { opacity: 1; }
 
+    /* 🎬 HERO SLIDESHOW */
     .hero {
+      position: relative;
       height: 75vh;
-      background: url('mariana-0261.jpg') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+      filter: grayscale(100%) contrast(105%);
+    }
+
+    .slide.active {
+      opacity: 1;
     }
 
     .about p {
@@ -138,7 +154,12 @@
     </div>
   </nav>
 
-  <section class="hero"></section>
+  <!-- 🎬 HERO SLIDES -->
+  <section class="hero">
+    <div class="slide active" style="background-image:url('mariana-0261.jpg')"></div>
+    <div class="slide" style="background-image:url('image2.jpg')"></div>
+    <div class="slide" style="background-image:url('image3.jpg')"></div>
+  </section>
 
   <section id="about" class="about">
     <h2>About</h2>
@@ -179,8 +200,19 @@
     © Mariana Silva
   </footer>
 
+  <!-- 🎞️ SLIDESHOW SCRIPT -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showNextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 4000);
+  </script>
+
 </body>
 </html>
-
-
-
